@@ -1,0 +1,48 @@
+<!--index.wxml-->
+<view class="container">
+  
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+
+  <view class="page-body">
+    <form>
+      
+      <view class="page-section">
+        <view class="weui-cells__title">请输入MAC地址</view>
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_input">
+            <input type="string" class="weui-input" bindinput="inputMac" placeholder="请输入MAC地址" value="{{mac}}"/>
+          </view>
+        </view>
+      </view>
+      
+      <view class="page-section">
+        <view class="weui-cells__title">请输入IP地址</view>
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_input">
+            <input type="digit" class="weui-input"  bindinput="inputIpAddress"placeholder="请输入IP地址" value="{{ip_address}}" />
+          </view>
+        </view>
+      </view>
+
+      <view class="page-section">
+        <view class="weui-cells__title">唤醒端口</view>
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_input">
+            <input class="weui-input"  maxlength="10" bindinput="inputPort" placeholder="唤醒端口" value="{{port}}"/>
+          </view>
+        </view>
+      </view>
+
+      <view class="btn-group"> 
+        <button type="primary" size="mini" bindtap="wakeOnLAN">WakeOnLAN</button>
+      </view>
+      
+    </form>
+  </view>
+</view>
